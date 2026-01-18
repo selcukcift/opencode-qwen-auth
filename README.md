@@ -1,22 +1,25 @@
 # opencode-qwen-auth
 
-A native OpenCode plugin that provides seamless authentication for [Qwen](https://qwen.ai) models using the Device Authorization Flow.
+[![npm](https://img.shields.io/npm/v/opencode-qwen-auth)](https://www.npmjs.com/package/opencode-qwen-auth)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+Native [OpenCode](https://opencode.ai) plugin for Qwen authentication using Device Authorization Flow (RFC 8628).
 
 ## Features
 
-- 🔐 **Native Device Flow**: Logs you in directly via Qwen's OAuth portal without needing the Qwen CLI installed.
-- 🔄 **Auto-Refresh**: Automatically refreshes expired tokens in the background.
-- 🤝 **Shared Credentials**: Uses the standard `~/.qwen/oauth_creds.json` file, so it shares login state with the Qwen CLI.
-- ⚡ **Zero Config**: Just install and use `qwen` provider.
+- **Native Device Flow** — Login via Qwen's OAuth portal, no Qwen CLI needed
+- **Auto-Refresh** — Automatically refreshes expired tokens in the background
+- **Shared Credentials** — Uses `~/.qwen/oauth_creds.json`, compatible with Qwen CLI
 
 ## Installation
 
 ```bash
-# In your opencode configuration directory
-opencode add opencode-qwen-auth
+opencode plugin add opencode-qwen-auth
 ```
 
-Or manually add to `opencode.json`:
+## Configuration
+
+Add to `~/.config/opencode/config.json`:
 
 ```json
 {
@@ -24,9 +27,7 @@ Or manually add to `opencode.json`:
   "provider": {
     "qwen": {
       "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "baseURL": "https://portal.qwen.ai/v1"
-      },
+      "options": { "baseURL": "https://portal.qwen.ai/v1" },
       "models": {
         "coder-model": {
           "name": "Qwen Coder",
@@ -40,13 +41,11 @@ Or manually add to `opencode.json`:
 
 ## Usage
 
-Start OpenCode with the Qwen provider:
-
 ```bash
 opencode run -m qwen/coder-model "Hello!"
 ```
 
-If you are not logged in, the plugin will print a URL and Code to your terminal logs. Follow the instructions to authenticate.
+First run will prompt you to authenticate via browser.
 
 ## License
 
