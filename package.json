@@ -1,0 +1,18 @@
+{
+  "name": "opencode-qwen-auth",
+  "version": "1.0.0",
+  "description": "Native Qwen Device Flow Authentication for OpenCode",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@ai-sdk/openai-compatible": "^0.0.10",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.11.0"
+  }
+}
